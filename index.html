@@ -1,0 +1,43 @@
+<div id="card">
+  <h2>ข้อความจากแสงแดดยามเช้า ☀️</h2>
+  <p id="quote">"วันนี้จะเป็นวันที่ดีของคุณนะ"</p>
+  <button onclick="changeQuote()">รับพลังใจเพิ่ม</button>
+</div>
+
+<style>
+  body {
+    background-color: #fffaf0; /* สีครีมอุ่นๆ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Tahoma', sans-serif;
+  }
+  #card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  button {
+    background-color: #ffb347;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+  }
+</style>
+<script>
+function changeQuote() {
+  const quotes = [
+    "คุณเก่งที่สุดแล้วที่ผ่านเมื่อวานมาได้",
+    "เริ่มต้นวันใหม่อย่างมีความสุขนะ",
+    "วันนี้จะมีเรื่องดีๆ เกิดขึ้นกับคุณแน่นอน"
+  ];
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  document.getElementById('quote').innerText = quotes[randomIndex];
+}
+</script>
