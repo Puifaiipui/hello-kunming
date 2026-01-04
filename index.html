@@ -1,55 +1,79 @@
-<div id="card">
-  <h2>ข้อความจากแสงแดดยามเช้า ☀️</h2>
-  <p id="quote">"วันนี้จะเป็นวันที่ดีของคุณนะ"</p>
-  <button onclick="changeQuote()">รับพลังใจเพิ่ม</button>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Together</title>
+    <style>
+        body {
+            background-color: #dabdbd; /* ใช้สีเดียวกับหน้าปุ่มกดเพื่อให้ดูต่อเนื่อง */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Tahoma', sans-serif;
+            flex-direction: column;
+            color: white;
+        }
 
-<style>
-  body {
-    background-image: url('https://i.pinimg.com/736x/9a/93/93/9a9393241c6eb330da3322f2f4bd8599.jpg');
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%; /* ทำรูปเป็นวงกลม */
+            border: 5px solid #E98E8E; /* สีชมพูเดียวกับปุ่มกด */
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 30px;
+            border: none;
+            background-color: #E98E8E;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: #CD8484;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="ชื่อไฟล์รูปภาพของคุณ.jpg" class="profile-img" alt="Our Picture">
+
+    <h2>happy birthday let's see what I do for u</h2>
+
+    <a href="passcode.html">
+        <button onclick="playMusic()">click here</button>
+    </a>
+
+    <audio id="bgm" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+       function playMusic() {
+    var audio = document.getElementById("bgm");
     
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0; 
-  }
-  body {
-    background-color: #fffaf0; /* สีครีมอุ่นๆ */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: 'Tahoma', sans-serif;
-  }
-  #card {
-    background: white;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-  button {
-    background-color: #ffb347;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-  }
-</style>
-<script>
-function changeQuote() {
-  const quotes = [
-    "คุณเก่งที่สุดแล้วที่ผ่านเมื่อวานมาได้",
-    "เริ่มต้นวันใหม่อย่างมีความสุขนะ",
-    "วันนี้จะมีเรื่องดีๆ เกิดขึ้นกับคุณแน่นอน"
-  ];
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  document.getElementById('quote').innerText = quotes[randomIndex];
+    // สั่งให้เพลงเริ่มเล่น
+    audio.play().then(() => {
+        // ถ้าเพลงเล่นได้สำเร็จ จะพาไปหน้าใส่รหัส
+        setTimeout(() => {
+            window.location.href = "passcode.html";
+        }, 500); // รอ 0.5 วินาทีเพื่อให้เสียงเริ่มออกก่อนแล้วค่อยเปลี่ยนหน้า
+    }).catch(error => {
+        // ถ้ามีปัญหาเรื่องลิขสิทธิ์หรือไฟล์หาไม่เจอ จะแสดงใน console
+        console.log("Music play failed:", error);
+        window.location.href = "passcode.html"; // ถึงเพลงไม่เล่นก็ยังให้ไปต่อได้
+    });
 }
-</script>
+    </script>
+
+</body>
+</html>

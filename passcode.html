@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Passcode</title>
+    <style>
+        body {
+            /* พื้นหลังสีน้ำตาลอมแดงตามรูป */
+            background-color: #dabdbd; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Tahoma', sans-serif;
+        }
+
+        #card {
+            background: transparent; /* ให้เห็นพื้นหลัง body */
+            text-align: center;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        #passcode {
+            padding: 10px;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 15px;
+            border: none;
+            width: 180px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        /* ตกแต่งปุ่มกดให้เป็นวงรีตามรูป */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 300px;
+        }
+
+        button {
+            width: 90px;
+            height: 60px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 30px; /* ทำให้เป็นวงรีมน */
+            border: none;
+            background-color: #000000; /* สีชมพูอมส้มตามรูป */
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            box-shadow: 0 4px rgba(0, 0, 0, 0.1);
+            transition: 0.2s;
+        }
+
+        button:active {
+            transform: scale(0.95);
+            background-color: #84cdc1;
+        }
+
+        #message {
+            color: #FFDADA;
+            font-size: 16px;
+            margin-top: 10px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="card">
+    <h2>entry password</h2>
+    <input type="password" id="passcode" maxlength="4" readonly placeholder="....">
+    
+    <div class="keypad">
+        <button onclick="press('1')">1</button>
+        <button onclick="press('2')">2</button>
+        <button onclick="press('3')">3</button>
+        <button onclick="press('4')">4</button>
+        <button onclick="press('5')">5</button>
+        <button onclick="press('6')">6</button>
+        <button onclick="press('7')">7</button>
+        <button onclick="press('8')">8</button>
+        <button onclick="press('9')">9</button>
+        <button onclick="clearCode()" style="background: #CD8484;">C</button>
+        <button onclick="press('0')">0</button>
+        <button onclick="checkPasscode()" style="background: #7DA67D;">OK</button>
+    </div>
+    <p id="message"></p>
+</div>
+
+<script>
+    function press(num) {
+        const input = document.getElementById('passcode');
+        if (input.value.length < 4) {
+            input.value += num;
+        }
+    }
+
+    function clearCode() {
+        document.getElementById('passcode').value = "";
+        document.getElementById('message').innerText = "";
+    }
+
+    function checkPasscode() {
+        const code = document.getElementById('passcode').value;
+        const message = document.getElementById('message');
+        
+        // แก้ไขรหัสผ่าน 4 ตัวของคุณที่นี่
+        if (code === "2302") { 
+            window.location.href = "cake.html"; 
+        } else {
+            message.innerText = "รหัสไม่ถูกต้อง ลองอีกครั้งนะ";
+            document.getElementById('passcode').value = "";
+        }
+    }
+</script>
+
+</body>
+</html>
